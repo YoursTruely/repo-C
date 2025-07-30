@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>no.offsimcentre</groupId>
+        <artifactId>library-parent-pom</artifactId>
+        <version>59</version>
+    </parent>
+
+    <groupId>no.offsim.common</groupId>
+    <artifactId>domain</artifactId>
+    <version>5.30.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Common :: Domain</name>
+    <description>
+        This is the parent Common Domain project.
+    </description>
+
+    <scm>
+        <connection>scm:git:ssh://git@bitbucket.org:offsim/common-domain.git</connection>
+        <url>https://bitbucket.org/offsim/common-domain</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <common-version>5.24.0</common-version>
+        <javafx.version>21.0.1</javafx.version>
+    </properties>
+
+    <modules>
+        <module>netbeans-file-template</module>
+        <module>base</module>
+        <module>core</module>
+        <module>client</module>
+        <module>remote-client</module>
+        <module>core-types</module>
+        <module>client-types</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnWarning>false</failOnWarning>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.13</version>
+            </plugin>
+
+            
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>no.offsim.common</groupId>
+                <artifactId>utilities1</artifactId>
+                <version>${common-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>no.offsim.common</groupId>
+                <artifactId>utilities2</artifactId>
+                <version>${common-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>no.offsim.common</groupId>
+                <artifactId>valueobjects</artifactId>
+                <version>${common-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>no.offsim.common</groupId>
+                <artifactId>tools</artifactId>
+                <version>${common-version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>no.offsim.common.domain</groupId>
+                <artifactId>remote-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.netbeans.api</groupId>
+                <artifactId>org-openide-util-lookup</artifactId>
+                <version>${netbeans.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>4.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>32.1.2-jre</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.30</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>5.10.0</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest-core</artifactId>
+                <version>2.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>1.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>${javafx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-fxml</artifactId>
+                <version>${javafx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>nbm-maven-plugin</artifactId>
+                <version>4.1</version>
+            </dependency>   
+        </dependencies>
+    </dependencyManagement>
+</project>
